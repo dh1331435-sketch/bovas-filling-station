@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bovas Filling Station — Rumuodara, Port Harcourt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2A47;
+    --orange:#E8531D;
+    --amber:#F5A623;
+    --off:#F7F5F2;
+    --ink:#1B1B1B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--off);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk', sans-serif; font-weight:600;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 32px;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--navy);
+  }
+  .nav-inner{
+    max-width:1160px; margin:0 auto; padding:18px 32px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .logo{
+    color:#fff; font-size:1.3rem; font-weight:700;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo span{color:var(--orange);}
+  .nav-links{display:flex; gap:30px; font-size:0.9rem; color:rgba(255,255,255,0.8);}
+  .nav-cta{
+    background:var(--orange); color:#fff;
+    padding:9px 20px; border-radius:3px; font-size:0.88rem; font-weight:600;
+  }
+
+  /* TOP INFO STRIP */
+  .info-strip{
+    background:var(--ink); color:rgba(255,255,255,0.75);
+    font-size:0.82rem; padding:8px 0;
+  }
+  .info-strip .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(160deg, var(--navy), #08192c);
+    color:#fff;
+    padding:80px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; right:-100px; top:-100px;
+    width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle, rgba(232,83,29,0.35), transparent 70%);
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+    padding:6px 14px; border-radius:20px; font-size:0.8rem; margin-bottom:24px;
+  }
+  .badge .dot{width:8px; height:8px; border-radius:50%; background:#3CCB6E;}
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    line-height:1.08;
+    max-width:640px;
+    margin-bottom:20px;
+  }
+  .hero h1 .accent{color:var(--amber);}
+  .hero p.sub{
+    max-width:520px; color:rgba(255,255,255,0.75); font-size:1.08rem; margin-bottom:36px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
+  .btn{
+    padding:15px 28px; border-radius:3px; font-size:0.95rem; font-weight:600;
+  }
+  .btn-orange{background:var(--orange); color:#fff;}
+  .btn-outline{border:1px solid rgba(255,255,255,0.4); color:#fff;}
+
+  .hero-facts{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+    max-width:640px;
+    border-top:1px solid rgba(255,255,255,0.15);
+    padding-top:28px;
+  }
+  .hero-facts div{}
+  .hero-facts .num{font-size:1.6rem; font-weight:700; color:var(--amber);}
+  .hero-facts .label{font-size:0.82rem; color:rgba(255,255,255,0.65);}
+
+  /* PRODUCTS STRIP */
+  .products{
+    background:var(--amber);
+    padding:0;
+  }
+  .products .wrap{
+    display:grid; grid-template-columns:repeat(4,1fr);
+  }
+  .product-item{
+    padding:26px 24px; border-right:1px solid rgba(0,0,0,0.08);
+    text-align:center;
+  }
+  .product-item:last-child{border-right:none;}
+  .product-item .icon{font-size:1.6rem; margin-bottom:8px;}
+  .product-item h4{font-size:0.98rem; color:var(--ink); font-weight:700;}
+  .product-item p{font-size:0.8rem; color:rgba(27,27,27,0.7); margin-top:2px;}
+
+  /* SECTION */
+  .section{padding:90px 0;}
+  .section-head{max-width:600px; margin-bottom:50px;}
+  .section-head .kicker{color:var(--orange); font-size:0.85rem; font-weight:600; margin-bottom:12px;}
+  .section-head h2{font-size:clamp(1.9rem,3.5vw,2.5rem); color:var(--navy);}
+
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .why-card{
+    background:#fff; border:1px solid rgba(15,42,71,0.08);
+    border-radius:6px; padding:30px 26px;
+  }
+  .why-card .n{
+    width:38px; height:38px; border-radius:50%;
+    background:var(--navy); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; margin-bottom:18px; font-size:0.95rem;
+  }
+  .why-card h3{font-size:1.1rem; margin-bottom:8px; color:var(--navy);}
+  .why-card p{font-size:0.92rem; color:#555;}
+
+  /* LOCATION / HOURS */
+  .location{
+    background:var(--navy); color:#fff;
+    padding:90px 0;
+  }
+  .location .wrap{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .location h2{font-size:clamp(1.9rem,3.5vw,2.5rem); margin-bottom:20px; color:#fff;}
+  .location p{color:rgba(255,255,255,0.72); margin-bottom:24px; max-width:440px;}
+  .info-list div{
+    display:flex; gap:14px; padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .info-list .k{color:var(--amber); font-size:0.82rem; min-width:90px; font-weight:600;}
+  .info-list .v{color:#fff; font-size:0.95rem;}
+  .map-box{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:6px;
+    aspect-ratio:4/3;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:10px;
+    text-align:center; padding:30px;
+  }
+  .map-box .pin{font-size:2rem;}
+  .map-box a{color:var(--amber); font-size:0.9rem; text-decoration:underline;}
+
+  /* TESTIMONIALS */
+  .testimonials .wrap{}
+  .rating-summary{
+    display:flex; align-items:center; gap:16px; margin-bottom:40px;
+  }
+  .rating-summary .score{font-size:2.6rem; font-weight:700; color:var(--navy); font-family:'Space Grotesk', sans-serif;}
+  .stars{color:var(--amber); font-size:1.1rem; letter-spacing:2px;}
+  .rating-summary .count{font-size:0.85rem; color:#666;}
+  .t-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .t-card{
+    background:#fff; border:1px solid rgba(15,42,71,0.08);
+    border-radius:6px; padding:24px;
+  }
+  .t-card .stars{font-size:0.9rem; margin-bottom:12px;}
+  .t-card p{font-size:0.92rem; color:#444; margin-bottom:14px;}
+  .t-card .who{font-size:0.82rem; color:#888; font-weight:600;}
+
+  /* FOOTER */
+  footer{background:var(--ink); color:rgba(255,255,255,0.8); padding:60px 0 30px;}
+  .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; margin-bottom:44px;}
+  footer h3{color:#fff; font-size:1.3rem; margin-bottom:12px;}
+  footer h3 span{color:var(--orange);}
+  footer p{color:rgba(255,255,255,0.55); font-size:0.9rem; max-width:320px;}
+  .footer-col h4{color:var(--amber); font-size:0.82rem; margin-bottom:14px; font-weight:600;}
+  .footer-col a, .footer-col p{display:block; font-size:0.9rem; margin-bottom:8px; color:rgba(255,255,255,0.75);}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.12); padding-top:20px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:0.78rem; color:rgba(255,255,255,0.4);
+  }
+
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .hero-facts{grid-template-columns:1fr 1fr;}
+    .products .wrap{grid-template-columns:1fr 1fr;}
+    .product-item{border-bottom:1px solid rgba(0,0,0,0.08);}
+    .why-grid{grid-template-columns:1fr;}
+    .location .wrap{grid-template-columns:1fr;}
+    .t-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr; gap:30px;}
+    .info-strip .wrap{flex-direction:column; gap:4px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="info-strip">
+  <div class="wrap">
+    <span>📍 30 Ahoada East-West Rd, Rumuodara, Port Harcourt</span>
+    <span>📞 +234 803 948 6780</span>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">BOVAS<span>.</span></div>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#why">Why Us</a>
+      <a href="#location">Location</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <a href="tel:+2348039486780" class="nav-cta">Call Station</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="badge"><span class="dot"></span> Open now · Fuel in stock</div>
+    <h1>Quality fuel, fair prices, <span class="accent">no wasted trips.</span></h1>
+    <p class="sub">Bovas Filling Station on Ahoada East-West Road, Rumuodara — check availability and directions before you drive down.</p>
+    <div class="hero-actions">
+      <a href="#location" class="btn btn-orange">Get Directions</a>
+      <a href="tel:+2348039486780" class="btn btn-outline">Call the Station</a>
+    </div>
+    <div class="hero-facts">
+      <div>
+        <div class="num">4.3★</div>
+        <div class="label">Google rating</div>
+      </div>
+      <div>
+        <div class="num">27+</div>
+        <div class="label">Customer reviews</div>
+      </div>
+      <div>
+        <div class="num">7 Days</div>
+        <div class="label">Open weekly</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="products" id="products">
+  <div class="wrap">
+    <div class="product-item">
+      <div class="icon">⛽</div>
+      <h4>PMS (Petrol)</h4>
+      <p>Accurate metering, always in stock</p>
+    </div>
+    <div class="product-item">
+      <div class="icon">🛢️</div>
+      <h4>AGO (Diesel)</h4>
+      <p>Bulk &amp; retail purchase</p>
+    </div>
+    <div class="product-item">
+      <div class="icon">🧴</div>
+      <h4>Engine Oil &amp; Lubricants</h4>
+      <p>Top brands available</p>
+    </div>
+    <div class="product-item">
+      <div class="icon">🚗</div>
+      <h4>Car Wash</h4>
+      <p>Quick wash while you fuel</p>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Why drivers choose Bovas</div>
+      <h2>Built on trust, not just convenience.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="n">01</div>
+        <h3>Fair, honest pricing</h3>
+        <p>Customers consistently note Bovas offers some of the best prices in the area — no surprise mark-ups.</p>
+      </div>
+      <div class="why-card">
+        <div class="n">02</div>
+        <h3>Accurate metering</h3>
+        <p>What you pay for is what you get — every pump checked and calibrated regularly.</p>
+      </div>
+      <div class="why-card">
+        <div class="n">03</div>
+        <h3>Reliable stock</h3>
+        <p>Rarely runs dry — a dependable stop even during citywide scarcity periods.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="wrap">
+    <div>
+      <h2>Find us on Ahoada East-West Road.</h2>
+      <p>Located in Rumuodara, Port Harcourt — easy to reach from East-West Road with clear access for cars and trucks.</p>
+      <div class="info-list">
+        <div><div class="k">Address</div><div class="v">30 Ahoada East-West Rd, Rumuodara, Port Harcourt, Rivers State</div></div>
+        <div><div class="k">Phone</div><div class="v">+234 803 948 6780</div></div>
+        <div><div class="k">Hours</div><div class="v">Open daily · Check current hours by phone</div></div>
+      </div>
+    </div>
+    <div class="map-box">
+      <div class="pin">📍</div>
+      <div>Tap below to open directions in Google Maps</div>
+      <a href="https://maps.google.com/?cid=8580329620856247279" target="_blank" rel="noopener">Open in Google Maps →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section testimonials" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What customers say</div>
+      <h2>Reviewed by drivers in Port Harcourt.</h2>
+    </div>
+    <div class="rating-summary">
+      <div class="score">4.3</div>
+      <div>
+        <div class="stars">★★★★☆</div>
+        <div class="count">Based on 27 Google reviews</div>
+      </div>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>Delivery and service here are dependable — staff are quick and professional.</p>
+        <div class="who">Google reviewer</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>One of the best prices for fuel in the whole city, without compromising quality.</p>
+        <div class="who">Google reviewer</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★☆</div>
+        <p>Staff are well-mannered and the station consistently offers competitive pricing.</p>
+        <div class="who">Google reviewer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>BOVAS<span>.</span></h3>
+        <p>Quality petroleum products and reliable service on Ahoada East-West Road, Rumuodara, Port Harcourt.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+2348039486780">+234 803 948 6780</a>
+        <p>30 Ahoada East-West Rd, Rumuodara, Port Harcourt</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#products">PMS &amp; AGO</a>
+        <a href="#products">Engine Oil</a>
+        <a href="#products">Car Wash</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Bovas Filling Station — Rumuodara Branch</span>
+      <span>Demo site built by Henry David</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
